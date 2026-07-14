@@ -4,12 +4,14 @@ def create_document(filename, user_id):
         "filename" : filename,
         "summary_text" : None,
         "user_id" : user_id,
-        "created_at" : "10:05"
+        "created_at" : "10:05",
+        "document_id" : len(doc_list)
     }
     doc_list.append(doc)
     return doc
 
-
+def get_all_documents():
+    return doc_list
 
 if __name__ == "__main__":
     result = create_document("contract.pdf", 1)
