@@ -1,3 +1,4 @@
+from services import ai_service
 doc_list = []
 def create_document(filename, user_id):
     doc = {
@@ -12,6 +13,17 @@ def create_document(filename, user_id):
 
 def get_all_documents():
     return doc_list
+
+def find_document_by_id(document_id):
+    for document in doc_list:
+        if document["document_id"] == int(document_id):
+            return document   
+
+def summarize_document(document_id):
+    doc = find_document_by_id(document_id)
+    summary = ai_service.summarize_text("Sample document content for testing")
+    doc["summary_text"] = summary
+    return doc 
 
 if __name__ == "__main__":
     result = create_document("contract.pdf", 1)
